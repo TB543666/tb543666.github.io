@@ -22,6 +22,6 @@ function deviceShaken() {
   fill(0);
   textFont("Cambria");
   textAlign(CENTER);
-  textSize(36);
+  textSize(100);
   text("My Name Jeff.", random(width), random(height));
 }
