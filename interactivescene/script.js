@@ -1,7 +1,7 @@
 let baseValue = 20;
 
 function setup() {
-createCanvas(windowWidth,windowHeight);
+  createCanvas(windowWidth,windowHeight);
 
 //let button = createButton('Clear');
 //button.position(30, 30);
@@ -9,15 +9,28 @@ createCanvas(windowWidth,windowHeight);
 
 function draw(){
   rect(50,50,50,50);
+
+  // if (mouseIsPressed){
+  //   noStroke();
+  //   fill(0);
+  //   //(random(255), random(255), random(255), random(255));
+  //   ellipse(mouseX,mouseY,baseValue,baseValue);
+
 }
 
-function mouseDragged() {
+
+
+function mouseDragged(){
   noStroke();
-  fill(random(255), random(255), random(255), random(255));
+  fill(0);
+  //(random(255), random(255), random(255), random(255));
   ellipse(mouseX,mouseY,baseValue,baseValue);
 }
-
-/*function mouseClicked(){
-  if (50 <= mouseX <= 100 && 50 <= mouseY <= 100){
-    background(0);
-*/
+// function mouseDragged(x,y) {
+//   y = constrain(mouseY, 0, 200);
+//   // x = constrain(mouseX, 0, windowWidth / 2);
+//
+//   noStroke();
+//   fill(random(255), random(255), random(255), random(255));
+//   ellipse(mouseX,mouseY,baseValue,baseValue);
+// }
