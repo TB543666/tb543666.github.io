@@ -2,9 +2,6 @@ let x, y, radius;
 let xSpeed, ySpeed;
 let mySound;
 
-function preload() {
-  mySound = loadSound("ding.mp3");
-}
 
 function setup(){
   createCanvas(windowWidth,windowHeight);
@@ -28,20 +25,16 @@ function moveThing(){
 
   if (y + radius >= height || y - radius <= 0){
     ySpeed = ySpeed * -1;
-    mySound.setVolume(0.1);
-    mySound.play();
   }
 
   if (x + radius >= width || x - radius <= 0){
     xSpeed = xSpeed * -1;
-    mySound.setVolume(0.1);
-    play();
   }
 }
 
 function displayThing(){
   noStroke();
   fill(random(255), random(255), random(255));
-  radius += 5;
+  radius += random(0,5);
   ellipse(x,y,radius,radius);
 }
