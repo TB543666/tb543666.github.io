@@ -50,6 +50,7 @@ function keyTyped() {
     penColor = 255;
   }
 
+  //This resets the canvas
   if (key === "r"){
     setup();
   }
