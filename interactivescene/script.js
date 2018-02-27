@@ -1,23 +1,51 @@
-let baseValue = 20;
+// Interactive Scene
+// Tony Li
+// Feb 26, 2018
+
+//This sets the variable known as penSize to 3
+//The penSize variable will determine the size of the pen stroke later on
+let penSize = 3;
+let penColor = 0;
 
 function setup() {
-createCanvas(windowWidth,windowHeight);
-
-//let button = createButton('Clear');
-//button.position(30, 30);
+//This creates a canvas and allows the canvas to be used as a variable later on
+  let canvas = createCanvas(windowWidth,windowHeight);
+  background(255)
 }
 
 function draw(){
-  rect(50,50,50,50);
+//This makes it so that the pen stroke can't be less than 1
+  penSize = constrain(penSize, 1, 100)
+
+//This bit of code is in charge of the actual drawings made on thre canvas.
+  if (mouseIsPressed){
+    stroke(penColor);
+    strokeWeight(penSize);
+    line(mouseX, mouseY, pmouseX, pmouseY);
+  }
 }
 
-function mouseDragged() {
-  noStroke();
-  fill(random(255), random(255), random(255), random(255));
-  ellipse(mouseX,mouseY,baseValue,baseValue);
-}
+function keyTyped() {
+//This changes the pen size
+  if (key === 'w') {
+    penSize += 1;
+  }
+  if (key === 's') {
+    penSize -= 1;
+  }
 
-/*function mouseClicked(){
-  if (50 <= mouseX <= 100 && 50 <= mouseY <= 100){
-    background(0);
-*/
+//This clears the canvas and returns it back to white
+  if (key === "c"){
+    background(255);
+  }
+
+//This allows the user to save the current canvas as an image
+  if (key === " "){
+    saveCanvas(canvas, 'My Drawing', 'jpg');
+  }
+//This basically creates an eraser for the user to use on the canvas
+  if (key === "e"){
+    penColor = 255;
+  }
+
+}
