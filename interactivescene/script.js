@@ -2,10 +2,15 @@
 // Tony Li
 // Feb 26, 2018
 
+<<<<<<< HEAD
 //This sets the variable known as penSize to 3
 //The penSize variable will determine the size of the pen stroke later on
 let penSize = 3;
 let penColor = 0;
+=======
+function setup() {
+  createCanvas(windowWidth,windowHeight);
+>>>>>>> eef27b3a0eec30799a4ceffa7e64894ee3f3e37c
 
 function setup() {
 //This creates a canvas and allows the canvas to be used as a variable later on
@@ -14,6 +19,7 @@ function setup() {
 }
 
 function draw(){
+<<<<<<< HEAD
 //This makes it so that the pen stroke can't be less than 1
   penSize = constrain(penSize, 1, 100)
 
@@ -49,3 +55,31 @@ function keyTyped() {
   }
 
 }
+=======
+  rect(50,50,50,50);
+
+  // if (mouseIsPressed){
+  //   noStroke();
+  //   fill(0);
+  //   //(random(255), random(255), random(255), random(255));
+  //   ellipse(mouseX,mouseY,baseValue,baseValue);
+
+}
+
+
+
+function mouseDragged(){
+  noStroke();
+  fill(0);
+  //(random(255), random(255), random(255), random(255));
+  ellipse(mouseX,mouseY,baseValue,baseValue);
+}
+// function mouseDragged(x,y) {
+//   y = constrain(mouseY, 0, 200);
+//   // x = constrain(mouseX, 0, windowWidth / 2);
+//
+//   noStroke();
+//   fill(random(255), random(255), random(255), random(255));
+//   ellipse(mouseX,mouseY,baseValue,baseValue);
+// }
+>>>>>>> eef27b3a0eec30799a4ceffa7e64894ee3f3e37c
