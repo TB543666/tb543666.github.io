@@ -2,28 +2,24 @@
 // Tony Li
 // Feb 26, 2018
 
-<<<<<<< HEAD
 //This sets the variable known as penSize to 3
 //The penSize variable will determine the size of the pen stroke later on
 let penSize = 3;
 let penColor = 0;
-=======
-function setup() {
-  createCanvas(windowWidth,windowHeight);
->>>>>>> eef27b3a0eec30799a4ceffa7e64894ee3f3e37c
 
 function setup() {
 //This creates a canvas and allows the canvas to be used as a variable later on
   let canvas = createCanvas(windowWidth,windowHeight);
-  background(255)
+  background(255);
+  penColor = 0;
+  penSize = 3;
 }
 
 function draw(){
-<<<<<<< HEAD
 //This makes it so that the pen stroke can't be less than 1
-  penSize = constrain(penSize, 1, 100)
+  penSize = constrain(penSize, 1, 100);
 
-//This bit of code is in charge of the actual drawings made on thre canvas.
+  //This bit of code is in charge of the actual drawings made on thre canvas.
   if (mouseIsPressed){
     stroke(penColor);
     strokeWeight(penSize);
@@ -33,53 +29,28 @@ function draw(){
 
 function keyTyped() {
 //This changes the pen size
-  if (key === 'w') {
+  if (key === "w") {
     penSize += 1;
   }
-  if (key === 's') {
+  if (key === "s") {
     penSize -= 1;
   }
 
-//This clears the canvas and returns it back to white
+  //This clears the canvas and returns it back to white
   if (key === "c"){
     background(255);
   }
 
-//This allows the user to save the current canvas as an image
+  //This allows the user to save the current canvas as an image
   if (key === " "){
-    saveCanvas(canvas, 'My Drawing', 'jpg');
+    saveCanvas(canvas, "My Drawing", "jpg");
   }
-//This basically creates an eraser for the user to use on the canvas
+  //This basically creates an eraser for the user to use on the canvas
   if (key === "e"){
     penColor = 255;
   }
 
+  if (key === "r"){
+    setup();
+  }
 }
-=======
-  rect(50,50,50,50);
-
-  // if (mouseIsPressed){
-  //   noStroke();
-  //   fill(0);
-  //   //(random(255), random(255), random(255), random(255));
-  //   ellipse(mouseX,mouseY,baseValue,baseValue);
-
-}
-
-
-
-function mouseDragged(){
-  noStroke();
-  fill(0);
-  //(random(255), random(255), random(255), random(255));
-  ellipse(mouseX,mouseY,baseValue,baseValue);
-}
-// function mouseDragged(x,y) {
-//   y = constrain(mouseY, 0, 200);
-//   // x = constrain(mouseX, 0, windowWidth / 2);
-//
-//   noStroke();
-//   fill(random(255), random(255), random(255), random(255));
-//   ellipse(mouseX,mouseY,baseValue,baseValue);
-// }
->>>>>>> eef27b3a0eec30799a4ceffa7e64894ee3f3e37c
