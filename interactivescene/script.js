@@ -6,11 +6,13 @@
 //The penSize variable will determine the size of the pen stroke later on
 let penSize = 3;
 let penColor = 0;
+let backgroundColorInput;
 
 function setup() {
 //This creates a canvas and allows the canvas to be used as a variable later on
   let canvas = createCanvas(windowWidth,windowHeight);
-  background(255);
+  backgroundColorInput = prompt("Select a color for the background. : ", "");
+  background(backgroundColorInput);
   penColor = 0;
   penSize = 3;
 }
