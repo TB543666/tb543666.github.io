@@ -59,7 +59,7 @@ function keyTyped() {
   
   //This cycles the color of the pen 
   if (key === "q"){
-    stroke((random(0, 255), random(0,255), random(0, 255));
+    stroke(random(0, 255), random(0,255), random(0, 255));
   }
   
   //This resets the canvas
