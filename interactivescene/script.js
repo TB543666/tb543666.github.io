@@ -20,6 +20,7 @@ function setup() {
 function draw(){
 //This makes it so that the pen stroke can't be less than 1
   penSize = constrain(penSize, 1, 100);
+  stroke(penColor)
 
   //This bit of code is in charge of the actual drawings made on thre canvas.
   if (mouseIsPressed){
@@ -58,7 +59,8 @@ function keyTyped() {
   
   //This cycles the color of the pen constantly
   if (key === "q"){
-    stroke((random(0, 255), random(0,255), random(0, 255)))
+    penColor = (random(0, 255), random(0,255), random(0, 255))
+    stroke(penColor)
   }
   
   //This resets the canvas
