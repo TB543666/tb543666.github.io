@@ -11,6 +11,8 @@ let backgroundColorInput;
 function setup() {
 //This creates a canvas and allows the canvas to be used as a variable later on
   let canvas = createCanvas(windowWidth,windowHeight);
+  backgroundColorInput = prompt("Select a color for the background. : ", "");
+  background(backgroundColorInput);
   penColor = 0;
   penSize = 3;
 }
@@ -37,9 +39,13 @@ function keyTyped() {
   }
     
   //This changes the color of the pen using user input 
-  if (key === "c"){
+  if (key === "p"){
     penColor = prompt("Select a color for the pen. : ", "");
-    ;
+  }
+  
+  //This clears the canvas 
+  if (key === "c"){
+    background(backgroundColorInput);
   }
 
   //This allows the user to save the current canvas as an image
@@ -48,9 +54,14 @@ function keyTyped() {
   }
   //This basically creates an eraser for the user to use on the canvas
   if (key === "e"){
-    penColor = 255;
+    penColor = backgroundColorInput;
   }
-
+  
+  //This cycles the color of the pen constantly
+  if (key === "q"){
+    penColor = (random(0, 255), random(0,255), random(0, 255))
+  }
+  
   //This resets the canvas
   if (key === "r"){
     setup();
