@@ -5,7 +5,7 @@
 //This sets the variable known as penSize to 3
 //The penSize variable will determine the size of the pen stroke later on
 let penSize = 3;
-let penColor = 0;
+let penColo;
 let backgroundColorInput;
 
 function setup() {
@@ -13,15 +13,14 @@ function setup() {
   let canvas = createCanvas(windowWidth,windowHeight);
   backgroundColorInput = prompt("Select a color for the background. : ", "");
   background(backgroundColorInput);
-  penColor = 0;
+  stroke(0);
   penSize = 3;
 }
 
 function draw(){
 //This makes it so that the pen stroke can't be less than 1
   penSize = constrain(penSize, 1, 100);
-  stroke(penColor)
-
+ 
   //This bit of code is in charge of the actual drawings made on thre canvas.
   if (mouseIsPressed){
     strokeWeight(penSize);
@@ -41,6 +40,7 @@ function keyTyped() {
   //This changes the color of the pen using user input 
   if (key === "p"){
     penColor = prompt("Select a color for the pen. : ", "");
+    stroke(penColor)
   }
   
   //This clears the canvas 
@@ -57,10 +57,9 @@ function keyTyped() {
     penColor = backgroundColorInput;
   }
   
-  //This cycles the color of the pen constantly
+  //This cycles the color of the pen 
   if (key === "q"){
-    penColor = (random(0, 255), random(0,255), random(0, 255))
-    stroke(penColor)
+    stroke((random(0, 255), random(0,255), random(0, 255));
   }
   
   //This resets the canvas
