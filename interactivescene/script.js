@@ -5,7 +5,7 @@
 //This sets the variable known as penSize to 3
 //The penSize variable will determine the size of the pen stroke later on
 let penSize = 3;
-let penColo;
+let penColor;
 let backgroundColorInput;
 
 function setup() {
