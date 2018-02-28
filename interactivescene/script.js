@@ -23,7 +23,6 @@ function draw(){
 
   //This bit of code is in charge of the actual drawings made on thre canvas.
   if (mouseIsPressed){
-    stroke(penColor);
     strokeWeight(penSize);
     line(mouseX, mouseY, pmouseX, pmouseY);
   }
@@ -59,7 +58,7 @@ function keyTyped() {
   
   //This cycles the color of the pen constantly
   if (key === "q"){
-    penColor = (random(0, 255), random(0,255), random(0, 255))
+    stroke((random(0, 255), random(0,255), random(0, 255)))
   }
   
   //This resets the canvas
