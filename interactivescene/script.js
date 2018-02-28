@@ -20,7 +20,7 @@ function setup() {
 function draw(){
 //This makes it so that the pen stroke can't be less than 1
   penSize = constrain(penSize, 1, 100);
- 
+
   //This bit of code is in charge of the actual drawings made on thre canvas.
   if (mouseIsPressed){
     strokeWeight(penSize);
@@ -36,14 +36,14 @@ function keyTyped() {
   if (key === "s") {
     penSize -= 1;
   }
-    
-  //This changes the color of the pen using user input 
+
+  //This changes the color of the pen using user input
   if (key === "p"){
     penColor = prompt("Select a color for the pen. : ", "");
     stroke(penColor)
   }
-  
-  //This clears the canvas 
+
+  //This clears the canvas
   if (key === "c"){
     background(backgroundColorInput);
   }
@@ -55,13 +55,14 @@ function keyTyped() {
   //This basically creates an eraser for the user to use on the canvas
   if (key === "e"){
     penColor = backgroundColorInput;
+    stroke(penColor)
   }
-  
-  //This cycles the color of the pen 
+
+  //This cycles the color of the pen
   if (key === "q"){
     stroke(random(0, 255), random(0,255), random(0, 255));
   }
-  
+
   //This resets the canvas
   if (key === "r"){
     setup();
