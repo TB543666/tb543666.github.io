@@ -1,22 +1,3 @@
-<<<<<<< HEAD
-// 1. Create the button
-let button = document.createElement("button");
-button.innerHTML = "Do Something";
-
-// 2. Append somewhere
-let body = document.getElementsByTagName("body")[0];
-body.appendChild(button);
-
-// 3. Add event handler
-button.addEventListener ("click", function() {
-  alert("did something");
-});
-
-/* Read 
-
-https://css-tricks.com/use-button-element/
-*/
-=======
 // p5js template project - replace with project title
 // Dan Schellenberg - replace with your name
 // Feb 2, 2018 - replace with the date
@@ -51,4 +32,3 @@ function draw() {
   rect(mouseX, mouseY, 100, 300);
   ellipse(400, 150, 300, 200);
 }
->>>>>>> eef27b3a0eec30799a4ceffa7e64894ee3f3e37c

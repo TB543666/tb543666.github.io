@@ -11,11 +11,7 @@ module.exports = {
     },
     "rules": {
         // enable additional rules
-<<<<<<< HEAD
         "indent": ["warn", 2],
-=======
-        "indent": ["error", 2],
->>>>>>> eef27b3a0eec30799a4ceffa7e64894ee3f3e37c
         "quotes": ["warn", "double"],
         "semi": ["error", "always"],
         "no-extra-parens": ["warn", "all"],
@@ -26,10 +22,6 @@ module.exports = {
         "no-var": ["warn"],
 
         // override default options for rules from base configurations
-<<<<<<< HEAD
-=======
-        "comma-dangle": ["warn", "always"],
->>>>>>> eef27b3a0eec30799a4ceffa7e64894ee3f3e37c
         "no-cond-assign": ["error", "always"],
 
         // disable rules from base configurations
@@ -37,12 +29,9 @@ module.exports = {
         "no-unused-vars": "off"
     },
     "globals": {
-<<<<<<< HEAD
       //allow direct access to the DOM without errors
       "document": true,
       "window": true,
-=======
->>>>>>> eef27b3a0eec30799a4ceffa7e64894ee3f3e37c
       //p5js globals
       "remove": true,
       "canvas": true,
