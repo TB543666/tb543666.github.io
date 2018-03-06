@@ -29,6 +29,7 @@ function draw() {
   if (state === 1) {
     startButton();
   }
+
   if (state === 2) {
     displayThing();
     moveThing();
