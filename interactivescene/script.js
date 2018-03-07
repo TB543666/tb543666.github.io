@@ -8,6 +8,7 @@ let penSize = 3;
 let penColor;
 let backgroundColorInput;
 let state;
+let backgroundChecker;
 
 function setup() {
   //This creates a canvas and allows the canvas to be used as a variable later on
@@ -28,13 +29,32 @@ function draw() {
   }
 
   if (state === 3) {
-    backgroundColorInput = prompt("Select a color for the background.");
-    background(backgroundColorInput);
-    state = 4;
+    if (backgroundChecker === true ) {
+      backgroundColorInput = prompt("Select a color for the background.");
+      background(backgroundColorInput);
+    }
+
+    else if (isNaN(int(backgroundColorInput))){
+      backgroundChecker = false;
+      state = 3;
+    }
+
+    else {
+      state = 4;
+    }
   }
 
   if (state === 4) {
-    drawScreen();
+    //This makes it so that the pen stroke can't be less than 1
+    penSize = constrain(penSize, 1, 100);
+
+    stroke(0);
+
+    //This bit of code is in charge of the actual drawings made on thre canvas.
+    if (mouseIsPressed) {
+      strokeWeight(penSize);
+      line(mouseX, mouseY, pmouseX, pmouseY);
+    }
   }
 }
 
@@ -49,16 +69,6 @@ function instructionScreen() {
 
 }
 
-function drawScreen() {
-  //This makes it so that the pen stroke can't be less than 1
-  penSize = constrain(penSize, 1, 100);
-
-  //This bit of code is in charge of the actual drawings made on thre canvas.
-  if (mouseIsPressed) {
-    strokeWeight(penSize);
-    line(mouseX, mouseY, pmouseX, pmouseY);
-  }
-}
 
 function startButton(){
   let buttonWidth = 400;
@@ -100,6 +110,7 @@ function keyTyped() {
   if (key === "p") {
     penColor = prompt("Select a color for the pen.");
     stroke(penColor);
+
   }
 
   //This clears the canvas
