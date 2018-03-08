@@ -13,9 +13,9 @@ let backgroundChecker;
 function setup() {
   //This creates a canvas and allows the canvas to be used as a variable later on
   let canvas = createCanvas(windowWidth, windowHeight);
-  stroke(0);
   penSize = 3;
   state = 1;
+  noStroke();
 }
 
 function draw() {
@@ -24,34 +24,31 @@ function draw() {
     startButton();
   }
 
-  if (state === 2) {
+  else if (state === 2) {
     instructionScreen();
   }
 
-  if (state === 3) {
-    if (backgroundChecker === true ) {
-      backgroundColorInput = prompt("Select a color for the background.");
-      background(backgroundColorInput);
-    }
-
-    else if (isNaN(int(backgroundColorInput))){
-      backgroundChecker = false;
-      state = 3;
-    }
-
-    else {
-      state = 4;
-    }
+  else if (state === 3) {
+    backgroundColorInput = prompt("Select a color for the background.");
+    background(backgroundColorInput);
+    state = 4;
+    mouseIsPressed = false;
   }
 
-  if (state === 4) {
+  // else if (isNaN(int(backgroundColorInput))){
+  //   backgroundChecker = false;
+  //   state = 3;
+
+
+  else if (state === 4) {
     //This makes it so that the pen stroke can't be less than 1
+    stroke(0);
     penSize = constrain(penSize, 1, 100);
 
-    stroke(0);
 
     //This bit of code is in charge of the actual drawings made on thre canvas.
     if (mouseIsPressed) {
+      stroke(0);
       strokeWeight(penSize);
       line(mouseX, mouseY, pmouseX, pmouseY);
     }
@@ -60,13 +57,10 @@ function draw() {
 
 function introScreen() {
   background(77, 148, 255);
-
 }
 
-
 function instructionScreen() {
-  background(0);
-
+  background(77, 148, 255);
 }
 
 
@@ -75,7 +69,7 @@ function startButton(){
   let buttonHeight = 200;
   let leftSide = width/2 - buttonWidth/2;
   let rightSide = leftSide + buttonWidth;
-  let topSide = height/2 - buttonHeight/2;
+  let topSide = height/2 - buttonHeight/2 + 150;
   let bottomSide = topSide + buttonHeight;
 
   noStroke();
@@ -94,7 +88,7 @@ function startButton(){
   else{
     fill(0);
   }
-  rect(leftSide ,topSide ,buttonWidth,buttonHeight, 20);
+  rect(leftSide ,topSide,buttonWidth,buttonHeight, 20);
 }
 
 function keyTyped() {
@@ -138,4 +132,5 @@ function keyTyped() {
   if (key === "r") {
     setup();
   }
+
 }
