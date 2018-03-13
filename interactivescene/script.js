@@ -9,6 +9,7 @@ let penColor;
 let backgroundColorInput;
 let state;
 let backgroundChecker;
+let intro;
 
 function setup() {
   //This creates a canvas and allows the canvas to be used as a variable later on
@@ -17,6 +18,11 @@ function setup() {
   state = 1;
   noStroke();
 }
+
+function preload() {
+  intro = loadImage("intro.png");
+}
+
 
 function draw() {
   if (state === 1) {
@@ -56,7 +62,7 @@ function draw() {
 }
 
 function introScreen() {
-  background(77, 148, 255);
+  background(intro);
 }
 
 function instructionScreen() {
@@ -79,16 +85,16 @@ function startButton(){
       mouseY >= topSide &&
       mouseY <= bottomSide) {
 
-    fill(125);
+    fill(183,241,247);
 
     if (mouseIsPressed) {
       state = 3;
     }
   }
   else{
-    fill(0);
+    fill(0,45,72);
   }
-  rect(leftSide ,topSide,buttonWidth,buttonHeight, 20);
+  rect(leftSide,topSide,buttonWidth,buttonHeight, 20);
 }
 
 function keyTyped() {
