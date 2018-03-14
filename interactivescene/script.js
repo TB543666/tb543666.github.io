@@ -23,7 +23,6 @@ function preload() {
   intro = loadImage("intro.png");
 }
 
-
 function draw() {
   if (state === 1) {
     introScreen();
@@ -41,16 +40,10 @@ function draw() {
     mouseIsPressed = false;
   }
 
-  // else if (isNaN(int(backgroundColorInput))){
-  //   backgroundChecker = false;
-  //   state = 3;
-
-
   else if (state === 4) {
     //This makes it so that the pen stroke can't be less than 1
     stroke(0);
     penSize = constrain(penSize, 1, 100);
-
 
     //This bit of code is in charge of the actual drawings made on thre canvas.
     if (mouseIsPressed) {
@@ -69,32 +62,42 @@ function instructionScreen() {
   background(77, 148, 255);
 }
 
-
-function startButton(){
-  let buttonWidth = 400;
+function startButton() {
+  let buttonWidth = 500;
   let buttonHeight = 200;
-  let leftSide = width/2 - buttonWidth/2;
+  let leftSide = width / 2 - buttonWidth / 2;
   let rightSide = leftSide + buttonWidth;
-  let topSide = height/2 - buttonHeight/2 + 150;
+  let topSide = height / 2 - buttonHeight / 2 + 150;
   let bottomSide = topSide + buttonHeight;
 
   noStroke();
 
   if (mouseX >= leftSide &&
-      mouseX <= rightSide &&
-      mouseY >= topSide &&
-      mouseY <= bottomSide) {
+    mouseX <= rightSide &&
+    mouseY >= topSide &&
+    mouseY <= bottomSide) {
 
-    fill(183,241,247);
+    fill(0, 140, 174);
 
     if (mouseIsPressed) {
+      background(intro);
       state = 3;
     }
   }
-  else{
-    fill(0,45,72);
+  else {
+    fill(0, 45, 72);
   }
-  rect(leftSide,topSide,buttonWidth,buttonHeight, 20);
+  rect(leftSide, topSide, buttonWidth, buttonHeight, 20);
+  buttonText();
+}
+
+function buttonText() {
+  textAlign(CENTER);
+  fill(200, 241, 247);
+  textSize(110);
+  textStyle(BOLD);
+  textFont("Cambria");
+  text("Start", width/2, 575);
 }
 
 function keyTyped() {
