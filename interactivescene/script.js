@@ -11,16 +11,18 @@ let state;
 let backgroundChecker;
 let intro;
 
+
+function preload() {
+  intro = loadImage("intro.png");
+}
+
 function setup() {
   //This creates a canvas and allows the canvas to be used as a variable later on
   let canvas = createCanvas(windowWidth, windowHeight);
   penSize = 3;
   state = 1;
   noStroke();
-}
-
-function preload() {
-  intro = loadImage("intro.png");
+  stroke(0);
 }
 
 function draw() {
@@ -42,7 +44,6 @@ function draw() {
 
   else if (state === 4) {
     //This makes it so that the pen stroke can't be less than 1
-    stroke(0);
     penSize = constrain(penSize, 1, 100);
 
     //This bit of code is in charge of the actual drawings made on thre canvas.
@@ -56,10 +57,6 @@ function draw() {
 
 function introScreen() {
   background(intro);
-}
-
-function instructionScreen() {
-  background(77, 148, 255);
 }
 
 function startButton() {
@@ -97,7 +94,11 @@ function buttonText() {
   textSize(110);
   textStyle(BOLD);
   textFont("Cambria");
-  text("Start", width/2, 575);
+  text("Start", width/2, 560);
+}
+
+function instructionScreen() {
+  background(77, 148, 255);
 }
 
 function keyTyped() {
@@ -113,7 +114,6 @@ function keyTyped() {
   if (key === "p") {
     penColor = prompt("Select a color for the pen.");
     stroke(penColor);
-
   }
 
   //This clears the canvas
@@ -137,9 +137,8 @@ function keyTyped() {
     stroke(random(0, 255), random(0, 255), random(0, 255));
   }
 
-  //This resets the canvas
+  //This resets the program
   if (key === "r") {
     setup();
   }
-
 }
