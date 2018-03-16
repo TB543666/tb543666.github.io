@@ -94,7 +94,7 @@ function buttonText() {
   textSize(110);
   textStyle(BOLD);
   textFont("Cambria");
-  text("Start", width/2, 560);
+  text("Start", width/2, height/2 +175);
 }
 
 function instructionScreen() {
@@ -128,8 +128,7 @@ function keyTyped() {
 
   //This basically creates an eraser for the user to use on the canvas
   if (key === "e") {
-    penColor = backgroundColorInput;
-    stroke(penColor);
+    stroke(backgroundColorInput);
   }
 
   //This cycles the color of the pen
