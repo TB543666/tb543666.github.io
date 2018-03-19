@@ -10,7 +10,8 @@ let backgroundColorInput;
 let state;
 let backgroundChecker;
 let intro;
-
+let rValue, gValue, bValue;
+let rSlider, gSlider, bSlider;
 
 function preload() {
   intro = loadImage("intro.png");
@@ -20,9 +21,46 @@ function setup() {
   //This creates a canvas and allows the canvas to be used as a variable later on
   let canvas = createCanvas(windowWidth, windowHeight);
   penSize = 3;
-  state = 1;
+  state = 4;
   noStroke();
-  stroke(0);
+  penColor = 0;
+
+}
+
+function displaySlider() {
+  rSlider = createSlider(0,255, 0);
+  rSlider.position(width-340, 50);
+  rSlider.style("width","255px");
+
+  gSlider = createSlider(0,255, 0);
+  gSlider.position(width-340, 50 + 30);
+  gSlider.style("width","255px");
+
+  bSlider = createSlider(0,255, 0);
+  bSlider.position(width-340, 50 + 60);
+  bSlider.style("width","255px");
+  noLoop();
+
+  rValue = rSlider.value();
+  gValue = gSlider.value();
+  bValue = bSlider.value();
+
+}
+
+function sliderDisplay() {
+  fill(0, 45, 72);
+  rect(width-400, 0, width, height);
+  noFill();
+
+  fill(200, 241, 247);
+  textSize(36);
+  textStyle(BOLD);
+  textFont("Cambria");
+  text("Pen Color", width-285, 40);
+  noFill();
+
+  fill(rValue, gValue, bValue);
+  rect(width-335, 150, 250, 250);
 }
 
 function draw() {
@@ -37,7 +75,8 @@ function draw() {
 
   else if (state === 3) {
     backgroundColorInput = prompt("Select a color for the background.");
-    background(backgroundColorInput);
+    // background(backgroundColorInput);
+    background(rValue, gValue, bValue);
     state = 4;
     mouseIsPressed = false;
   }
@@ -45,12 +84,15 @@ function draw() {
   else if (state === 4) {
     //This makes it so that the pen stroke can't be less than 1
     penSize = constrain(penSize, 1, 100);
+    displaySlider();
+    sliderDisplay();
 
     //This bit of code is in charge of the actual drawings made on thre canvas.
     if (mouseIsPressed) {
-      stroke(0);
+      stroke(penColor);
       strokeWeight(penSize);
       line(mouseX, mouseY, pmouseX, pmouseY);
+
     }
   }
 }
@@ -133,7 +175,8 @@ function keyTyped() {
 
   //This cycles the color of the pen
   if (key === "q") {
-    stroke(random(0, 255), random(0, 255), random(0, 255));
+    // stroke(random(0, 255), random(0, 255), random(0, 255));
+    penColor = random(0, 255), random(0, 255), random(0, 255);
   }
 
   //This resets the program
