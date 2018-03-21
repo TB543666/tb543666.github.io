@@ -70,7 +70,7 @@ function buttonText() {
   textSize(150);
   textStyle(BOLD);
   textFont("Cambria");
-  text("ALPHA PAINT", width / 2, height / 2-100);
+  text("ALPHA PAINT", width / 2, height / 2 - 100);
 }
 
 //Create sliders with a range of 0, 255 and 0, 80 for the color and size of the pen
@@ -112,32 +112,32 @@ function sidePanel() {
 
   //This is just used to label the pen color and pan size sliders
   fill(200, 241, 247);
-  text("Pen Color", width- 200, 40);
+  text("Pen Color", width - 200, 40);
   text("Pen Size", width - 200, 490);
 }
 
 //This is for the tools found at the bottom of the side panel
-function toolSelection(){
+function toolSelection() {
   imageMode(CENTER);
 
   //Clear canvas icon
   text("Clear Canvas", width - 200, 595);
-  image(clear, width-200, 655, 70, 90);
+  image(clear, width - 200, 655, 70, 90);
 
   //Save canvas icon
   text("Save Canvas", width - 200, 765);
-  image(save, width-200, 825, 80, 80);
+  image(save, width - 200, 825, 80, 80);
 }
 
 //This is used to recognize the clicking of the icons
-function mouseClicked(){
+function mouseClicked() {
   //Button portion of the clear canvas icon
-  if (mouseButton && mouseX >= width-236 && mouseX <= width-166 && mouseY >= 610 && mouseY <= 700){
+  if (mouseButton && mouseX >= width - 236 && mouseX <= width - 166 && mouseY >= 610 && mouseY <= 700) {
     background(backgroundColorInput);
   }
 
   //Button portion of the save canvas icon
-  if (mouseButton && mouseX >= width-229 && mouseX <= width-185 && mouseY >= 783 && mouseY <= 862){
+  if (mouseButton && mouseX >= width - 229 && mouseX <= width - 185 && mouseY >= 783 && mouseY <= 862) {
     saveCanvas(canvas, "My Drawing", "jpg");
   }
 }
@@ -164,7 +164,7 @@ function draw() {
     toolSelection();
 
     //This allowed me to put the 'setupSlider' function in the draw loop instead of inside the function
-    if (stateChecker){
+    if (stateChecker) {
       setupSlider();
       stateChecker = false;
     }
