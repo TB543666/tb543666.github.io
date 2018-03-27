@@ -4,6 +4,7 @@
 
 let heights = [];
 let numberOfRectangles;
+let tallestPoint = 0;
 
 function setup() {
   createCanvas(windowWidth, windowHeight);
@@ -17,9 +18,25 @@ function draw() {
 }
 
 function generateInitialTerrain(numberOfRectangles) {
+  let time = 0;
+  let dt = 0.001;
+
   for (let i=0; i<numberOfRectangles; i++) {
-    heights.push(random(100, 500));
+    let currentheight = noise(time)*500;
+    heights.push(currentheight);
+    print(currentheight);
+
+    if (tallestPoint < currentheight){
+      tallestPoint = currentheight;
+    }
+
+    time += dt;
   }
+}
+
+function plantFlag(){
+  let tallestPoint = 0;
+
 }
 
 function displayTerrain() {
