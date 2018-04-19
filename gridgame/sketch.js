@@ -2,23 +2,22 @@
 // Tony Li
 // April 18, 2018
 
-
-
 // Known Errors
-// I wanst able to get the food to work properly
-
+// I wasn't able to get the food to work properly,
+// I was also planning to keep track of the score but because I wasn't able to get the food to work the score counter wouldn't work
+// I was also unable to add on the body of the snake 
 
 //Variables
 let state;
 let intro;
 let rows = 75;
 let cols = 75;
-let grid;
-let cellSize;
+let grid, cellSize;
 let movement, playerX, playerY;
+let scoreTimer;
+let foodState = true;
 
-
-// Preloading the required asset
+// // Preloading the required asset
 function preload() {
   intro = loadImage("assets/intro.png");
 }
@@ -31,14 +30,14 @@ function setup() {
   state = 1;
   playerX = 0 + cellSize*13;
   playerY = 0 + cellSize*8;
-  frameRate(10);
+  frameRate(9);
 
 }
 
 // Displays all the aspects of the game.
 function draw() {
   if (state === 1) {
-    background(intro);
+    // background(intro);
     startButton();
   }
 
@@ -55,19 +54,27 @@ function draw() {
     }
   }
 
-  if (state === 3) {
+	if (state === 3) {
+    background(0);
+		nextButton();
+		screenText();
+		// state = 4
+  }
+	
+  if (state === 4) {
     background(0);
     gameOverButton();
     screenText();
   }
 }
 
-
+//This is supposed to be placing a piece of food in a random position on the grid  
 function foodSpawn(){
-  fill(255);
-  rect(random(cols), random(rows), cellSize, cellSize);
-
-
+	if (foodState === true){
+		fill(255);
+		rect(random(width), random(height), cellSize, cellSize);
+		foodState = false
+	}
 }
 
 
@@ -77,11 +84,11 @@ function snake(){
     fill(0, 255, 0);
     rect(playerX, playerY, cellSize, cellSize);
 
-    if (playerX < 0 ||playerX > width){
+    if (playerX <= -1 ||playerX > width){
       state = 3;
     }
 
-    if (playerY < 0 ||playerY > height){
+    if (playerY <= -1 ||playerY > height){
       state = 3;
     }
   }
@@ -111,16 +118,16 @@ function snakeMove(){
 //Whenever one of these keys are pressed the movement of the snake changes
 function keyPressed() {
   if (state === 2) {
-    if (key === "w" || key === "W") {
+    if (key === "w" || key === "W" || keyCode === UP_ARROW) {
       movement = "up";
     }
-    if (key === "s" || key === "S") {
+    if (key === "s" || key === "S" || keyCode === DOWN_ARROW) {
       movement = "down";
     }
-    if (key === "a" || key === "A") {
+    if (key === "a" || key === "A" || keyCode === LEFT_ARROW) {
       movement = "left";
     }
-    if (key === "d" || key === "D") {
+    if (key === "d" || key === "D" || keyCode === RIGHT_ARROW) {
       movement = "right";
     }
   }
@@ -153,7 +160,7 @@ function createRandom2dArray(cols, rows) {
   return randomGrid;
 }
 
-//This registers the pressing of the button and the changing of the buttons color
+//This registers the pressing of the button on the start screen
 function startButton() {
   let buttonWidth = 500;
   let buttonHeight = 200;
@@ -182,7 +189,38 @@ function startButton() {
   screenText();
 }
 
-//This registers the pressing of the button and the changing of the buttons color
+//This registers the pressing of the button on the score screen
+function nextButton(){
+	let buttonWidth = 400;
+  let buttonHeight = 150;
+  let leftSide = width / 2 - buttonWidth / 2;
+  let rightSide = leftSide + buttonWidth;
+  let topSide = height / 2 - buttonHeight / 2 + 150;
+  let bottomSide = topSide + buttonHeight;
+
+  noStroke();
+
+  if (mouseX >= leftSide &&
+    mouseX <= rightSide &&
+    mouseY >= topSide+50 &&
+    mouseY <= bottomSide) {
+
+    fill(0, 140, 174);
+
+    if (mouseIsPressed) {
+      playerX = 0 + cellSize*13;
+      playerY = 0 + cellSize*8;
+      state = 4;
+			mouseIsPressed = false;
+    }
+  }
+  else {
+    fill(0, 45, 72);
+  }
+  rect(leftSide, topSide +50, buttonWidth, buttonHeight, 20);
+}
+
+//This registers the pressing of the button on the gameover screen
 function gameOverButton(){
   let buttonWidth = 600;
   let buttonHeight = 200;
@@ -213,7 +251,7 @@ function gameOverButton(){
 
 }
 
-//This writes the text seen on the canvas
+//This writes the text seen on the canvas, this text changes based on the different states 
 function screenText() {
   if (state === 1 ){
     textAlign(CENTER);
@@ -230,8 +268,24 @@ function screenText() {
     textFont("Cambria");
     text("Snake.io", width / 2, height / 2 - 100);
   }
+			
+	if (state === 3){
+    textAlign(CENTER);
+    fill(200, 241, 247);
+    textSize(110);
+    textStyle(BOLD);
+    textFont("Cambria");
+    text("Next", width / 2, height / 2 + 225);
 
-  if (state === 3){
+    textAlign(CENTER);
+    fill(150, 241, 247);
+    textSize(100);
+    textStyle(BOLD);
+    textFont("Cambria");
+    text("Score", width / 2, height / 2 - 100);
+  }
+	
+  if (state === 4){
     textAlign(CENTER);
     fill(200, 241, 247);
     textSize(110);
@@ -247,3 +301,4 @@ function screenText() {
     text("Game Over", width / 2, height / 2 - 100);
   }
 }
+
