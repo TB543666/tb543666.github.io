@@ -2,13 +2,13 @@
 // Dan Schellenberg
 // Mar 26, 2018
 
-let rows = 5;
-let cols = 5;
+let rows = 65;
+let cols = 65;
 let grid;
 let cellSize;
 
 function setup() {
-  createCanvas(600, 600);
+  createCanvas(windowWidth, windowHeight);
   cellSize = width / cols;
   grid = createRandom2dArray(cols, rows);
 }
@@ -32,33 +32,13 @@ function displayGrid() {
   }
 }
 
-function mousePressed() {
-  let xcoord = floor(mouseX / cellSize);
-  let ycoord = floor(mouseY / cellSize);
-
-  if (grid[xcoord][ycoord] === 1) {
-    grid[xcoord][ycoord] = 0;
-  }
-  else {
-    grid[xcoord][ycoord] = 1;
-  }
-}
-
-function keyPressed() {
-  grid = createRandom2dArray(cols, rows);
-}
 
 function createRandom2dArray(cols, rows) {
   let randomGrid = [];
   for (let x=0; x<cols; x++) {
     randomGrid.push([]);
     for (let y=0; y<rows; y++) {
-      if (random(100) < 50) {
-        randomGrid[x].push(0);
-      }
-      else {
-        randomGrid[x].push(1);
-      }
+      randomGrid[x].push(1);
     }
   }
   return randomGrid;
