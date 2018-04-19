@@ -5,7 +5,7 @@
 // Known Errors
 // I wasn't able to get the food to work properly,
 // I was also planning to keep track of the score but because I wasn't able to get the food to work the score counter wouldn't work
-// I was also unable to add on the body of the snake 
+// I was also unable to add on the body of the snake
 
 //Variables
 let state;
@@ -37,7 +37,7 @@ function setup() {
 // Displays all the aspects of the game.
 function draw() {
   if (state === 1) {
-    // background(intro);
+    background(intro);
     startButton();
   }
 
@@ -54,13 +54,12 @@ function draw() {
     }
   }
 
-	if (state === 3) {
+  if (state === 3) {
     background(0);
-		nextButton();
-		screenText();
-		// state = 4
+    nextButton();
+    screenText();
   }
-	
+
   if (state === 4) {
     background(0);
     gameOverButton();
@@ -68,13 +67,13 @@ function draw() {
   }
 }
 
-//This is supposed to be placing a piece of food in a random position on the grid  
+//This is supposed to be placing a piece of food in a random position on the grid
 function foodSpawn(){
-	if (foodState === true){
-		fill(255);
-		rect(random(width), random(height), cellSize, cellSize);
-		foodState = false
-	}
+  if (foodState === true){
+    fill(255);
+    rect(random(width), random(height), cellSize, cellSize);
+    // foodState = false;
+  }
 }
 
 
@@ -84,11 +83,11 @@ function snake(){
     fill(0, 255, 0);
     rect(playerX, playerY, cellSize, cellSize);
 
-    if (playerX <= -1 ||playerX > width){
+    if (playerX <= -1 ||playerX >= width){
       state = 3;
     }
 
-    if (playerY <= -1 ||playerY > height){
+    if (playerY <= -1 ||playerY >= height){
       state = 3;
     }
   }
@@ -191,7 +190,7 @@ function startButton() {
 
 //This registers the pressing of the button on the score screen
 function nextButton(){
-	let buttonWidth = 400;
+  let buttonWidth = 400;
   let buttonHeight = 150;
   let leftSide = width / 2 - buttonWidth / 2;
   let rightSide = leftSide + buttonWidth;
@@ -211,7 +210,7 @@ function nextButton(){
       playerX = 0 + cellSize*13;
       playerY = 0 + cellSize*8;
       state = 4;
-			mouseIsPressed = false;
+      mouseIsPressed = false;
     }
   }
   else {
@@ -251,7 +250,7 @@ function gameOverButton(){
 
 }
 
-//This writes the text seen on the canvas, this text changes based on the different states 
+//This writes the text seen on the canvas, this text changes based on the different states
 function screenText() {
   if (state === 1 ){
     textAlign(CENTER);
@@ -268,8 +267,8 @@ function screenText() {
     textFont("Cambria");
     text("Snake.io", width / 2, height / 2 - 100);
   }
-			
-	if (state === 3){
+
+  if (state === 3){
     textAlign(CENTER);
     fill(200, 241, 247);
     textSize(110);
@@ -284,7 +283,7 @@ function screenText() {
     textFont("Cambria");
     text("Score", width / 2, height / 2 - 100);
   }
-	
+
   if (state === 4){
     textAlign(CENTER);
     fill(200, 241, 247);
@@ -301,4 +300,3 @@ function screenText() {
     text("Game Over", width / 2, height / 2 - 100);
   }
 }
-
