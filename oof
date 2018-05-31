@@ -1,0 +1,2 @@
+$ git config --local http.sslBackend "openssl"
+$ git config --local http.sslCAInfo [path to .pem file]
