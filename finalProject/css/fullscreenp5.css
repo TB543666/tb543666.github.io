@@ -1,0 +1,9 @@
+body, html {
+    padding: 0;
+    margin: 0;
+    background: #3ca1c3;
+    color: #fff;
+}
+::-webkit-scrollbar {
+    display: block;
+}
